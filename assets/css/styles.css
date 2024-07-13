@@ -1,0 +1,166 @@
+/* Ejercicios 2 al 4 */ 
+/*body {
+    background-color: #eaf2e3;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.strong-paragraph {
+    font-weight: bold;
+    text-align: center;
+    font-style: italic
+}
+
+.home-paragraphs {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}*/
+
+:root{
+    /* https://www.invico.gov.ar/Agentes/MaterialesDeComunicacion */
+    --primary_color: #4CA92C;
+    --secondary_color_1: #033F24;
+    --secondary_color_2: #005424;
+    --secondary_color_3: #00902F;
+    --secondary_color_4: #98BF11;
+    --font_family: 'Montserrat', sans-serif;
+    --text_color_1: #576A72;
+    --text_color_2: #1F2D33;
+    --linear_gradient: linear-gradient(45deg, #98BF11 0%, #00902F 100%);
+    --min_logo_height: 45px;
+
+    /* Opciones personales */
+    --high_success: #7CBA3D;
+    --success: #91D300;
+    --high_primary: #007bff;
+    --primary: #05C5F1;
+    --background: #F2F2F3;
+    --alert: #bc4749;
+    --border_radius: 5px;
+}
+
+* {
+    font-family: var(--font_family) !important;
+}
+
+/* body{
+    background-color: var(--background);
+} */
+
+header {
+    background-color: var(--primary_color);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.navbar {
+    background-color: var(--background);
+}
+
+.navbar #img-logo {
+    width: 75px;
+    height: auto;
+    min-height: var(--min_logo_height);
+}
+
+section {
+    padding: 20px; /* espaciado para la sección de 20 pixeles */
+}
+
+/* Estilos para el nav y enlaces de ul y li */   
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav li a:hover {
+    background-color: var(--primary_color)!important;
+}
+
+
+.accordion {
+    --bs-accordion-active-bg: var(--secondary_color_3);
+    --bs-accordion-active-color: #fff;
+    --bs-accordion-btn-bg: var(--primary_color);
+    --bs-accordion-bg: var(--secondary_color_1);
+    --bs-accordion-color: #fff;
+}
+
+/* Estilos para las imágenes del carousel */
+/* .carousel-item img {
+    display: block; 
+    margin: 0 auto; 
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+} */
+
+.carousel-item {
+    height: 65vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+.quienes-somos .card img{
+    width: 100%;
+    height: auto;
+    /* border: 3px solid #69bd45; */
+    /* border-radius: 10px */
+}
+
+table img {
+    filter: brightness(0) saturate(100%) invert(100%);
+    color: white;
+}
+
+.centered_cols {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+/* Se mantiene del Trabajo Integrador 1 */
+#home-paragraphs{
+    background-image: linear-gradient(90deg, rgba(5,197,241,0.80) 0%, rgba(115,204,48,0.80) 100%);
+}
+
+#home-paragraphs p{ 
+    color: var(--text_color_2);    
+}
+
+#home-paragraphs p:nth-child(1) {
+    color: #fff; 
+} 
+
+footer {
+    background-color: var(--primary_color); /* Color de fondo del footer */
+    color: #fff !important;
+    padding: 20px 0; 
+}
+    
+.footer-content {
+    max-width: 800px; /* Ancho máximo del contenido del footer */
+    margin: 0 auto; /* Centrar el contenido del footer horizontalmente */
+    text-align: center; 
+}
+
+.social-icons a {
+    font-size: 24px; /* Tamaño de los íconos */
+    margin: 0 10px; /* Espaciado entre los íconos */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    transition: color 0.3s; /* Transición suave para el cambio de color */
+}
+
+.social-icons a:hover {
+    color: #ff9800; /* Color de los íconos al pasar el ratón por encima */
+}
