@@ -36,7 +36,8 @@ class Home extends BaseController
         $data['titulo'] = 'Registro'; //agregamos en TP3
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
-        echo view('front/registro');
+        // echo view('front/registro');
+        echo view('back/usuario/registro'); //cargamos desde el back
         echo view('front/footer_view');
     }
 
@@ -45,7 +46,8 @@ class Home extends BaseController
         $data['titulo'] = 'Login'; //agregamos en TP3
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
-        echo view('front/login');
+        // echo view('front/login');
+        echo view('back/usuario/login'); //cargamos desde el back
         echo view('front/footer_view');
     }
 

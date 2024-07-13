@@ -4,8 +4,14 @@
                 <h2>Iniciar Sesión</h2>
             </div>
             <!-- Inicio de formulario de login -->
-            <div class="card-body" media="(max-width: 768px)">    
-                <form>
+            <div class="card-body" media="(max-width: 768px)"> 
+                <!-- Mensaje de Error -->
+                <?php if(session()->getFlashdata('msg')):?>
+                    <div class="alert alert-warning">
+                        <?= session()->getFlashdata('msg')?>
+                    </div>
+                <?php endif;?>
+                <form method="post" action="<?php echo base_url('/enviar-login'); ?>">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Correo</label>
                         <input type="email" class="form-control" 
