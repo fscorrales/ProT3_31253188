@@ -6,7 +6,8 @@ class Home extends BaseController
 {
     public function index()
     {
-        echo view('front/head_view');
+        $data['titulo'] = 'Página Principal'; //agregamos en TP3
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/principal');
         echo view('front/footer_view');
@@ -14,7 +15,8 @@ class Home extends BaseController
 
     public function quienes_somos()
     {
-        echo view('front/head_view');
+        $data['titulo'] = 'Quiénes Somos'; //agregamos en TP3
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/quienes_somos');
         echo view('front/footer_view');
@@ -22,7 +24,8 @@ class Home extends BaseController
 
     public function acerca_de()
     {
-        echo view('front/head_view');
+        $data['titulo'] = 'Acerca de'; //agregamos en TP3
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/acerca_de');
         echo view('front/footer_view');
@@ -30,7 +33,8 @@ class Home extends BaseController
 
     public function registro()
     {
-        echo view('front/head_view');
+        $data['titulo'] = 'Registro'; //agregamos en TP3
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/registro');
         echo view('front/footer_view');
@@ -38,7 +42,8 @@ class Home extends BaseController
 
     public function login()
     {
-        echo view('front/head_view');
+        $data['titulo'] = 'Login'; //agregamos en TP3
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/login');
         echo view('front/footer_view');
@@ -46,7 +51,8 @@ class Home extends BaseController
 
     public function agentes()
     {
-        echo view('front/head_view');
+        $data['titulo'] = 'Agentes'; //agregamos en TP3
+        echo view('front/head_view', $data);
         echo view('front/navbar_view');
         echo view('front/agentes');
         echo view('front/footer_view');
