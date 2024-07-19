@@ -4,7 +4,7 @@ use App\Models\usuarios_model;
 use CodeIgniter\Controller;
 
 
-class usuarios_controller extends Controller{
+class UsuariosController extends Controller{
 
     public function __construct(){
         helper(['form', 'url']); //helper es una biblioteca de codeIgniter
@@ -28,6 +28,8 @@ class usuarios_controller extends Controller{
         ],);
 
         $formModel = new usuarios_model();
+        
+
         if(!$input) {
             $data['titulo'] = 'Registro';
             echo view('front/head_view', $data);
@@ -46,7 +48,8 @@ class usuarios_controller extends Controller{
 
             // flashdata funciona solo en redirigir la funcion en el controlador en la vista de carga
             session()->setFlashdata('success', 'Usuario registrado exitosamente');
-            return $this->response->redirect('/login');
+            // return $this->response->redirect('/registro');
+            return redirect()->to('/registro');
         }
     }
 

@@ -164,3 +164,11 @@ footer {
 .social-icons a:hover {
     color: #ff9800; /* Color de los íconos al pasar el ratón por encima */
 }
+
+/* se agrega en el TP3 */
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
