@@ -35,9 +35,9 @@
         <li class="nav-item">
           <a class="nav-link" href="acerca_de">Acerca de</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="agentes">Agentes</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url('/logout'); ?>" 
           tabindex="-1" aria-disabled="true">Cerrar Sesión</a>
@@ -58,9 +58,9 @@
         <li class="nav-item">
           <a class="nav-link" href="acerca_de">Acerca de</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="agentes">Agentes</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url('/logout'); ?>" 
           tabindex="-1" aria-disabled="true">Cerrar Sesión</a>
