@@ -47,9 +47,9 @@ class UsuariosController extends Controller{
             ]);
 
             // flashdata funciona solo en redirigir la funcion en el controlador en la vista de carga
-            session()->setFlashdata('success', 'Usuario registrado exitosamente');
+            session()->setFlashdata('msg', 'Usuario registrado exitosamente');
             // return $this->response->redirect('/registro');
-            return redirect()->to('registro');
+            return redirect()->to('login');
         }
     }
 
@@ -74,11 +74,12 @@ class UsuariosController extends Controller{
     }
 
     public function updateUsuario(){
+        $id = $this->request->getVar('id_usuario');
         $input = $this->validate([
             'nombre'   => 'required|min_length[3]',
             'apellido' => 'required|min_length[3]|max_length[25]',
             'usuario'  => 'required|min_length[3]',
-            'email'    => 'required|min_length[4]|max_length[100]|valid_email',
+            'email'    => 'required|min_length[4]|max_length[100]|valid_email|is_unique[usuarios.email'.($id ? ',id_usuario,' . $id : '') . ']',
         ],);
 
         $usuario = [
@@ -100,7 +101,6 @@ class UsuariosController extends Controller{
         } else {
             // print_r($usuario);exit;
             $formModel = new UsuariosModel();
-            $id = $this->request->getVar('id_usuario');
             $formModel-> updateUsuario($id, $usuario);
 
             // flashdata funciona solo en redirigir la funcion en el controlador en la vista de carga

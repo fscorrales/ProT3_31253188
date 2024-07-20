@@ -11,7 +11,7 @@ Class UsuariosModel extends Model //el nombre de la clase debe coincider con el 
     ]; //todos los campos de la tabla
 
     public function getUsuarios(){
-        return $this->where('baja', 'NO')->findAll();
+        return $this->where('baja', 'NO')->where('id_perfil', '2')->findAll();
     }
 
     public function getUsuario($id){

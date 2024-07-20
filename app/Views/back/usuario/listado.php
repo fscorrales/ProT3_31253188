@@ -14,7 +14,6 @@
                 <th scope="col">Apellido</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">E-mail</th>
-                <th scope="col">Perfil</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -26,7 +25,6 @@
                 <td><?php echo $d['apellido']; ?></td>
                 <td><?php echo $d['usuario']; ?></td>
                 <td><?php echo $d['email']; ?></td>
-                <td><?php echo $d['id_perfil']; ?></td>
                 <td>
                     <a class="btn btn-primary" 
                         href="<?php echo base_url('editar-usuario').'/'. $d['id_usuario'];?>">
