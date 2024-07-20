@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-use App\Models\usuarios_model;
+use App\Models\UsuariosModel;
 use CodeIgniter\Controller;
 
 
@@ -17,7 +17,7 @@ class LoginController extends BaseController {
 
     public function auth() {
         $session = session();
-        $model = new usuarios_model();
+        $model = new UsuariosModel();
 
         //traemos los datos del formulario
         $email = $this->request->getVar('email');
@@ -29,7 +29,8 @@ class LoginController extends BaseController {
             $ba = $data['baja'];
             if($ba == 'SI'){
                 $session->setFlashdata('msg', 'Usuario dado de baja');
-                return redirect()->to('/LoginController');
+                return redirect()->to('/login');
+                // return redirect()->to('/LoginController');
             }
             //Se verifican los datos ingresados para iniciar, si cumple la verificación inicia sesión
             $verify_pass = password_verify($password, $pass);

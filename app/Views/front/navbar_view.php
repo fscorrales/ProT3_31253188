@@ -30,10 +30,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="quienes_somos">Quiénes Somos</a>
+          <a class="nav-link" href="<?php echo base_url('quienes_somos'); ?>">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="acerca_de">Acerca de</a>
+          <a class="nav-link" href="<?php echo base_url('acerca_de'); ?>">Acerca de</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('usuarios'); ?>">Usuarios</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="agentes">Agentes</a>
@@ -53,10 +56,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="quienes_somos">Quiénes Somos</a>
+          <a class="nav-link" href="<?php echo base_url('quienes_somos'); ?>">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="acerca_de">Acerca de</a>
+          <a class="nav-link" href="<?php echo base_url('acerca_de'); ?>">Acerca de</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="agentes">Agentes</a>
@@ -72,10 +75,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="quienes_somos">Quiénes Somos</a>
+          <a class="nav-link" href="<?php echo base_url('quienes_somos'); ?>">Quiénes Somos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="acerca_de">Acerca de</a>
+          <a class="nav-link" href="<?php echo base_url('acerca_de'); ?>">Acerca de</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -83,10 +86,10 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="login">Login</a>
+              <a class="dropdown-item" href="<?php echo base_url('login'); ?>">Login</a>
             </li>
             <li>
-              <a class="dropdown-item" href="registro">Registrarse</a>
+              <a class="dropdown-item" href="<?php echo base_url('registro'); ?>">Registrarse</a>
             </li>
           </ul>
         </li>

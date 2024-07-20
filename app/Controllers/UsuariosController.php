@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-use App\Models\usuarios_model;
+use App\Models\UsuariosModel;
 use CodeIgniter\Controller;
 
 
@@ -10,7 +10,7 @@ class UsuariosController extends Controller{
         helper(['form', 'url']); //helper es una biblioteca de codeIgniter
     }
 
-    public function create() {
+    public function addUsuarioForm() {
         $data['titulo'] = 'Registro';
         echo view('front/head_view', $data);
         echo view('front/navbar_view');
@@ -18,7 +18,7 @@ class UsuariosController extends Controller{
         echo view('front/footer_view');
     }
 
-    public function formValidation() {
+    public function addUsuario() {
         $input = $this->validate([
             'nombre'   => 'required|min_length[3]',
             'apellido' => 'required|min_length[3]|max_length[25]',
@@ -27,7 +27,7 @@ class UsuariosController extends Controller{
             'pass'     => 'required|min_length[3]|max_length[10]',
         ],);
 
-        $formModel = new usuarios_model();
+        $formModel = new UsuariosModel();
         
 
         if(!$input) {
@@ -49,8 +49,77 @@ class UsuariosController extends Controller{
             // flashdata funciona solo en redirigir la funcion en el controlador en la vista de carga
             session()->setFlashdata('success', 'Usuario registrado exitosamente');
             // return $this->response->redirect('/registro');
-            return redirect()->to('/registro');
+            return redirect()->to('registro');
         }
+    }
+
+    public function listadoUsuarios(){
+        $data['titulo'] = 'Listado Usuarios';
+        $model = new UsuariosModel();
+        $data['listado'] = $model->getUsuarios();
+        echo view('front/head_view', $data);
+        echo view('front/navbar_view');
+        echo view('back/usuario/listado', $data);
+        echo view('front/footer_view');
+    }
+
+    public function editarUsuarioForm($id){
+        $data['titulo'] = 'Edición Usuario';
+        $model = new UsuariosModel();
+        $data['usuario'] = $model->getUsuario($id);
+        echo view('front/head_view', $data);
+        echo view('front/navbar_view');
+        echo view('back/usuario/edit', $data);
+        echo view('front/footer_view');
+    }
+
+    public function updateUsuario(){
+        $input = $this->validate([
+            'nombre'   => 'required|min_length[3]',
+            'apellido' => 'required|min_length[3]|max_length[25]',
+            'usuario'  => 'required|min_length[3]',
+            'email'    => 'required|min_length[4]|max_length[100]|valid_email',
+        ],);
+
+        $usuario = [
+            'id_usuario' => $this->request->getVar('id_usuario'),
+            'nombre'   => $this->request->getVar('nombre'),
+            'apellido' => $this->request->getVar('apellido'),
+            'usuario'  => $this->request->getVar('usuario'),
+            'email'    => $this->request->getVar('email'),
+        ];
+        
+        if(!$input) {
+            $data['titulo'] = 'Edición Usuario';
+            $data['usuario'] = $usuario;
+            $data['validation'] = $this->validator;
+            echo view('front/head_view', $data);
+            echo view('front/navbar_view');
+            echo view('back/usuario/edit', $data); 
+            echo view('front/footer_view');
+        } else {
+            // print_r($usuario);exit;
+            $formModel = new UsuariosModel();
+            $id = $this->request->getVar('id_usuario');
+            $formModel-> updateUsuario($id, $usuario);
+
+            // flashdata funciona solo en redirigir la funcion en el controlador en la vista de carga
+            session()->setFlashdata('mensaje', 'Usuario editado exitosamente');
+            // return $this->response->redirect('/registro');
+            return redirect()->to('usuarios');
+        }
+    }
+
+    public function deleteUsuario($id){
+        $model = new UsuariosModel();
+        $usuario = $model->getUsuario($id);
+        $usuario['baja'] = 'SI';
+        // print_r($usuario);exit;
+        $model-> updateUsuario($id, $usuario);
+        // flashdata funciona solo en redirigir la funcion en el controlador en la vista de carga
+        session()->setFlashdata('mensaje', 'Usuario eliminado exitosamente');
+        // return $this->response->redirect('/registro');
+        return redirect()->to('usuarios');
     }
 
 }
