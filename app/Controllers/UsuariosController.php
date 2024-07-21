@@ -152,7 +152,8 @@ class UsuariosController extends Controller{
             session()->setFlashdata('mensaje', 'Usuario editado exitosamente');
             // return $this->response->redirect('/registro');
             if(session()->get('id_usuario') == $id){
-                return redirect()->to('/');
+                // return redirect()->to('/');
+                $this -> editarUsuarioForm($id);
             } else {
                 return redirect()->to('usuarios');
             }

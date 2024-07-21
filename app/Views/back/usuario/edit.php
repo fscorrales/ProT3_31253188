@@ -3,6 +3,12 @@
             <div class="card-header text-center">
                 <h2>Editar Usuario</h2>
             </div>
+            <?php if (session('mensaje')){ ?>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <?php echo session('mensaje'); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php }; ?>
             <!-- Inicio de formulario de registro -->
             <div class="card-body" media="(max-width: 768px)"> 
                 <form method="post" action="<?php echo base_url('/enviar-usuario-form'); ?>">
