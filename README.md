@@ -31,4 +31,4 @@ assets/data/corrales_fernando.sql
 ### Tabla y Vista Agentes (¿catálogo, tal vez?):
  - Incorporación de la **vista Agentes** en el **perfil usuario** por medio de **JavaScript y Datatable** 
  - Las **funcionalidades de la misma aún no han sido incorporadas** a la espera del Trabajo Integrador IV
- - La **tabla aún no fue incorpada a la base de datos** y se mantiene en un .csv separado.
+ - La **tabla aún no fue incorpada a la base de datos** y se mantiene en un **.json separado**.
