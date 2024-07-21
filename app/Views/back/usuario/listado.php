@@ -12,7 +12,7 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">id</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Usuario</th>

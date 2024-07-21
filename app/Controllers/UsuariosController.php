@@ -10,32 +10,89 @@ class UsuariosController extends Controller{
         helper(['form', 'url']); //helper es una biblioteca de codeIgniter
     }
 
-    public function addUsuarioForm() {
-        $data['titulo'] = 'Registro';
-        echo view('front/head_view', $data);
-        echo view('front/navbar_view');
-        echo view('back/usuario/registro'); //cargamos desde el back
-        echo view('front/footer_view');
+    public function loadViews($view=null, $data=null) {
+        if($data){
+            echo view('front/head_view', $data); // lo que se repite en todas las vistas
+            echo view('front/navbar_view'); // lo que se repite en todas las vistas
+            echo view($view, $data);
+            echo view('front/footer_view'); // lo que se repite en todas las vistas
+        } else {
+            echo view('front/head_view'); // lo que se repite en todas las vistas
+            echo view('front/navbar_view'); // lo que se repite en todas las vistas
+            echo view($view);
+            echo view('front/footer_view'); // lo que se repite en todas las vistas
+        }
     }
 
-    public function addUsuario() {
-        $input = $this->validate([
+    public function addUsuarioForm() {
+        $data['titulo'] = 'Registro';
+        $data['validation'] = \Config\Services::validation();
+        $this->loadViews('back/usuario/registro', $data);
+    }
+
+    public function validateForm($id = null) {
+
+        $validation = \Config\Services::validation();
+        $validation->setRules([
             'nombre'   => 'required|min_length[3]',
             'apellido' => 'required|min_length[3]|max_length[25]',
             'usuario'  => 'required|min_length[3]',
-            'email'    => 'required|min_length[4]|max_length[100]|valid_email|is_unique[usuarios.email]',
-            'pass'     => 'required|min_length[3]|max_length[10]',
-        ],);
+            'email'    => 'required|min_length[4]|max_length[100]|valid_email|is_unique[usuarios.email'.($id ? ',id_usuario,' . $id : '') . ']',
+            'pass'     => 'required|min_length[5]|max_length[10]',
+        ], 
+        // Seguidamente se puede personalizar el mensaje de error
+        [
+            'nombre' => [
+                'required' => 'El campo nombre es obligatorio',
+                'min_length' => 'El campo nombre debe tener al menos 3 caracteres',
+            ],
+            'apellido' => [
+                'required' => 'El campo apellido es obligatorio',
+                'min_length' => 'El campo apellido debe tener al menos 3 caracteres',
+                'max_length' => 'El campo apellido debe tener máximo 25 caracteres',
+            ],
+            'usuario' => [
+                'required' => 'El campo usuario es obligatorio',
+                'min_length' => 'El campo usuario debe tener al menos 3 caracteres',
+            ],
+            'email' => [
+                'required' => 'El campo email es obligatorio',
+                'min_length' => 'El campo email debe tener al menos 4 caracteres',
+                'max_length' => 'El campo email debe tener máximo 100 caracteres',
+                'valid_email' => 'El email ingresado no es válido',
+                'is_unique' => 'El email ingresado ya se encuentra registrado, ingrese otro',
+            ],
+            'pass' => [
+                'required' => 'El campo password es obligatorio',
+                'min_length' => 'El campo password debe tener al menos 5 caracteres',
+                'max_length' => 'El campo password debe tener máximo 25 caracteres',
+            ],
+        ]);
+
+        return $validation;
+    }
+
+    public function addUsuario() {
+
+        $usuario = [
+            'id_usuario' => $this->request->getVar('id_usuario'),
+            'nombre'   => $this->request->getVar('nombre'),
+            'apellido' => $this->request->getVar('apellido'),
+            'usuario'  => $this->request->getVar('usuario'),
+            'email'    => $this->request->getVar('email'),
+            'pass'    => $this->request->getVar('pass'),
+        ];
+
+        $validation = $this->validateForm();
 
         $formModel = new UsuariosModel();
         
-
-        if(!$input) {
+        if(!$validation->withRequest($this->request)->run()) {
+            session()->setFlashdata('msg', 'fail');
             $data['titulo'] = 'Registro';
-            echo view('front/head_view', $data);
-            echo view('front/navbar_view');
-            echo view('back/usuario/registro', ['validation' => $this->validator]); 
-            echo view('front/footer_view');
+            $data['validation'] = $validation;
+            $data['usuario'] = $usuario;
+            $this->loadViews('back/usuario/registro', $data);
         } else {
             $formModel->save([
                 'nombre'   => $this->request->getVar('nombre'),
@@ -57,30 +114,26 @@ class UsuariosController extends Controller{
         $data['titulo'] = 'Listado Usuarios';
         $model = new UsuariosModel();
         $data['listado'] = $model->getUsuarios();
-        echo view('front/head_view', $data);
-        echo view('front/navbar_view');
-        echo view('back/usuario/listado', $data);
-        echo view('front/footer_view');
+        $this->loadViews('back/usuario/listado', $data);
     }
 
     public function editarUsuarioForm($id){
         $data['titulo'] = 'Edición Usuario';
+        $data['validation'] = \Config\Services::validation();
         $model = new UsuariosModel();
         $data['usuario'] = $model->getUsuario($id);
-        echo view('front/head_view', $data);
-        echo view('front/navbar_view');
-        echo view('back/usuario/edit', $data);
-        echo view('front/footer_view');
+        $this->loadViews('back/usuario/edit', $data);
     }
 
     public function updateUsuario(){
         $id = $this->request->getVar('id_usuario');
-        $input = $this->validate([
-            'nombre'   => 'required|min_length[3]',
-            'apellido' => 'required|min_length[3]|max_length[25]',
-            'usuario'  => 'required|min_length[3]',
-            'email'    => 'required|min_length[4]|max_length[100]|valid_email|is_unique[usuarios.email'.($id ? ',id_usuario,' . $id : '') . ']',
-        ],);
+        $validation = $this->validateForm($id);
+        // $input = $this->validate([
+        //     'nombre'   => 'required|min_length[3]',
+        //     'apellido' => 'required|min_length[3]|max_length[25]',
+        //     'usuario'  => 'required|min_length[3]',
+        //     'email'    => 'required|min_length[4]|max_length[100]|valid_email|is_unique[usuarios.email'.($id ? ',id_usuario,' . $id : '') . ']',
+        // ],);
 
         $usuario = [
             'id_usuario' => $this->request->getVar('id_usuario'),
@@ -90,14 +143,11 @@ class UsuariosController extends Controller{
             'email'    => $this->request->getVar('email'),
         ];
         
-        if(!$input) {
+        if(!$validation->withRequest($this->request)->run()) {
             $data['titulo'] = 'Edición Usuario';
             $data['usuario'] = $usuario;
-            $data['validation'] = $this->validator;
-            echo view('front/head_view', $data);
-            echo view('front/navbar_view');
-            echo view('back/usuario/edit', $data); 
-            echo view('front/footer_view');
+            $data['validation'] = $validation;
+            $this->loadViews('back/usuario/edit', $data);
         } else {
             // print_r($usuario);exit;
             $formModel = new UsuariosModel();

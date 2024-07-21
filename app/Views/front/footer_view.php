@@ -3,11 +3,11 @@
           <div class="footer-content">
             <div class="social-icons d-flex justify-content-center">
                   <a href="https://www.facebook.com/invico/" target="_blank">
-                    <img src="assets/img/facebook2.svg" alt="Facebook"></a>
+                    <img src="<?php echo base_url('assets/img/facebook2.svg') ?>" alt="Facebook"></a>
                   <a href="https://www.instagram.com/invicocorrientes/" target="_blank">
-                    <img src="assets/img/instagram.svg" alt="Instagram"></a>
+                    <img src="<?php echo base_url('assets/img/instagram.svg') ?>" alt="Instagram"></a>
                   <a href="https://twitter.com/invico" target="_blank">
-                    <img src="assets/img/twitter.svg" alt="Twitter"></a>
+                    <img src="<?php echo base_url('assets/img/twitter.svg') ?>" alt="Twitter"></a>
             </div>
             <p>
               &copy; Derechos Reservados Fernando Corrales | Instituto de Vivienda de Corrientes
@@ -15,7 +15,7 @@
           </div>
     </footer>
     <!-- Bootstrap -->
-    <script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo base_url('assets/js/bootstrap/bootstrap.bundle.min.js') ?>"></script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
     <!-- Datatables -->

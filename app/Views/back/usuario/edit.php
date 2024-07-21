@@ -5,18 +5,10 @@
             </div>
             <!-- Inicio de formulario de registro -->
             <div class="card-body" media="(max-width: 768px)"> 
-                <?php $validation = \Config\Services::validation(); ?>  
                 <form method="post" action="<?php echo base_url('/enviar-usuario-form'); ?>">
-                    <?= csrf_field() ?>
-                    <?= csrf_field() ?>
-                    <?php if(!empty(session()->getFlashdata('fail'))):?>
-                        <div class="alert alert-danger"><?= session()->getFlashdata('fail');?></div>
-                    <?php endif;?>
-                    <?php if(!empty(session()->getFlashdata('success'))):?>
-                        <div class="alert alert-danger"><?= session()->getFlashdata('sucess');?></div>
-                    <?php endif;?>
                     <div class="mb-3">
                         <input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario']; ?>">
+                        <input type="hidden" name="pass" value="<?php echo 'pasar'; ?>">
                         <label for="exampleFormInputInput1" class="form-label">Nombre</label>
                         <input name="nombre" type="text" class="form-control" placeholder="Nombre completo"
                         value="<?php echo $usuario['nombre']; ?>">
