@@ -56,8 +56,8 @@
                     </div>
                     <button type="submit" class="btn btn-success">Editar</button>
                     <a type="reset" class="btn btn-danger" 
-                        href="<?php if(session() -> id_perfil == 1): echo base_url('usuarios'); 
-                                elseif(session() -> id_perfil == 2): echo base_url('/');
+                        href="<?php if(session() -> id_usuario != $usuario['id_usuario']): echo base_url('usuarios'); 
+                                elseif(session() -> id_usuario == $usuario['id_usuario']): echo base_url('/');
                                 endif?>"
                     >Cancelar</a>
                 </form>
