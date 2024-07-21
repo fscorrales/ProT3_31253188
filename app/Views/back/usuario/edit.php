@@ -8,6 +8,7 @@
                 <form method="post" action="<?php echo base_url('/enviar-usuario-form'); ?>">
                     <div class="mb-3">
                         <input type="hidden" name="id_usuario" value="<?php echo $usuario['id_usuario']; ?>">
+                        <input type="hidden" name="id_perfil" value="<?php echo $usuario['id_perfil']; ?>">
                         <input type="hidden" name="pass" value="<?php echo 'pasar'; ?>">
                         <label for="exampleFormInputInput1" class="form-label">Nombre</label>
                         <input name="nombre" type="text" class="form-control" placeholder="Nombre completo"
@@ -55,7 +56,10 @@
                     </div>
                     <button type="submit" class="btn btn-success">Editar</button>
                     <a type="reset" class="btn btn-danger" 
-                    href="<?php echo base_url('usuarios'); ?>">Cancelar</a>
+                        href="<?php if(session() -> id_perfil == 1): echo base_url('usuarios'); 
+                                elseif(session() -> id_perfil == 2): echo base_url('/');
+                                endif?>"
+                    >Cancelar</a>
                 </form>
             </div>
         </div>

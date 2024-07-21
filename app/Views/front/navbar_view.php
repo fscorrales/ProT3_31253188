@@ -23,7 +23,7 @@
     <!-- NAVBAR para ADMIN -->
     <?php if(session()->id_perfil == 1): ?>
       <div class="btn btn-secondary active btnUser btn-sm">
-        <a href="">ADMIN: <?php echo $session->get('nombre'); ?></a>
+        <a href="">ADMIN: <?php echo $session->get('usuario'); ?></a>
       </div>
 
     <a class="navbar-brand" href="#"></a>
@@ -35,8 +35,18 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url('acerca_de'); ?>">Acerca de</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('usuarios'); ?>">Usuarios</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Usuarios
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="<?php echo base_url('editar-usuario') . '/' . $session->get('id_usuario'); ?>">Mis Datos</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="<?php echo base_url('usuarios'); ?>">Listado de Usuarios</a>
+            </li>
+          </ul>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="agentes">Agentes</a>
@@ -50,7 +60,7 @@
     <!-- NAVBAR para usuarios -->
     <?php elseif(session()->id_perfil == 2): ?>
       <div class="btn btn-secondary active btnUser btn-sm">
-        <a href="">USUARIO: <?php echo $session->get('nombre'); ?></a>
+        <a href="">USUARIO: <?php echo $session->get('usuario'); ?></a>
       </div>
     <a class="navbar-brand" href="#"></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -60,6 +70,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url('acerca_de'); ?>">Acerca de</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo base_url('editar-usuario') . '/' . $session->get('id_usuario'); ?>">Mis Datos</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="agentes">Agentes</a>

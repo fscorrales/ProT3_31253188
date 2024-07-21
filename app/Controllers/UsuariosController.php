@@ -137,6 +137,7 @@ class UsuariosController extends Controller{
 
         $usuario = [
             'id_usuario' => $this->request->getVar('id_usuario'),
+            'id_perfil' => $this->request->getVar('id_perfil'),
             'nombre'   => $this->request->getVar('nombre'),
             'apellido' => $this->request->getVar('apellido'),
             'usuario'  => $this->request->getVar('usuario'),
@@ -156,7 +157,11 @@ class UsuariosController extends Controller{
             // flashdata funciona solo en redirigir la funcion en el controlador en la vista de carga
             session()->setFlashdata('mensaje', 'Usuario editado exitosamente');
             // return $this->response->redirect('/registro');
-            return redirect()->to('usuarios');
+            if(session()->get('id_perfil') == 2){
+                return redirect()->to('/');
+            } else {
+                return redirect()->to('usuarios');
+            }
         }
     }
 

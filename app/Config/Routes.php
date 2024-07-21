@@ -22,6 +22,7 @@ $routes->get('usuarios', 'UsuariosController::listadoUsuarios');
 $routes->get('editar-usuario/(:num)', 'UsuariosController::editarUsuarioForm/$1');
 $routes->get('eliminar-usuario/(:num)', 'UsuariosController::deleteUsuario/$1');
 $routes->post('enviar-usuario-form','UsuariosController::updateUsuario');
+$routes->get('/auto_edit/(:num)', 'UsuariosController::autoEditarUsuarioForm/$1');
 
 /* rutas del Login */
 $routes->get('/login', 'LoginController');

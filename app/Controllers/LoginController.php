@@ -47,7 +47,7 @@ class LoginController extends BaseController {
                 ];
                 //iniciamos sesión
                 $session->set($ses_data);
-                session()->setFlashdata('msg', 'Bienvenido');
+                session()->setFlashdata('msg', 'Bienvenido ' . $data['usuario']);
                 return redirect()->to('/panel');
                 // return redirect()->to('/prueba'); //pagina principal
             } else {
