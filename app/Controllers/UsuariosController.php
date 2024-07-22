@@ -111,10 +111,14 @@ class UsuariosController extends Controller{
     }
 
     public function listadoUsuarios(){
-        $data['titulo'] = 'Listado Usuarios';
-        $model = new UsuariosModel();
-        $data['listado'] = $model->getUsuarios();
-        $this->loadViews('back/usuario/listado', $data);
+        if(session()->get('id_perfil') != 1){
+            return redirect()->to('/');
+        } else{
+            $data['titulo'] = 'Listado Usuarios';
+            $model = new UsuariosModel();
+            $data['listado'] = $model->getUsuarios();
+            $this->loadViews('back/usuario/listado', $data);
+        }
     }
 
     public function editarUsuarioForm($id){
