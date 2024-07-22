@@ -75,7 +75,7 @@
           <a class="nav-link" href="<?php echo base_url('editar-usuario') . '/' . $session->get('id_usuario'); ?>">Mis Datos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="agentes">Agentes</a>
+          <a class="nav-link" href="<?php echo base_url('agentes'); ?>">Agentes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url('/logout'); ?>" 

@@ -111,21 +111,25 @@ class UsuariosController extends Controller{
     }
 
     public function listadoUsuarios(){
-        if(session()->get('id_perfil') != 1){
-            return redirect()->to('/');
-        } else{
+        if(session()->get('id_perfil') == 1){
             $data['titulo'] = 'Listado Usuarios';
             $model = new UsuariosModel();
             $data['listado'] = $model->getUsuarios();
             $this->loadViews('back/usuario/listado', $data);
+        } else{
+            return redirect()->to('/');
         }
     }
 
     public function editarUsuarioForm($id){
+        $model = new UsuariosModel();
+        if(session()->get('id_perfil') == 1){
+            $data['usuario'] = $model->getUsuario($id);
+        } else{
+            $data['usuario'] = $model->getUsuario(session()->get('id_usuario'));
+        }
         $data['titulo'] = 'Edición Usuario';
         $data['validation'] = \Config\Services::validation();
-        $model = new UsuariosModel();
-        $data['usuario'] = $model->getUsuario($id);
         $this->loadViews('back/usuario/edit', $data);
     }
 
@@ -165,15 +169,19 @@ class UsuariosController extends Controller{
     }
 
     public function deleteUsuario($id){
-        $model = new UsuariosModel();
-        $usuario = $model->getUsuario($id);
-        $usuario['baja'] = 'SI';
-        // print_r($usuario);exit;
-        $model-> updateUsuario($id, $usuario);
-        // flashdata funciona solo en redirigir la funcion en el controlador en la vista de carga
-        session()->setFlashdata('mensaje', 'Usuario eliminado exitosamente');
-        // return $this->response->redirect('/registro');
-        return redirect()->to('usuarios');
+        if(session()->get('id_perfil') == 1){
+            $model = new UsuariosModel();
+            $usuario = $model->getUsuario($id);
+            $usuario['baja'] = 'SI';
+            // print_r($usuario);exit;
+            $model-> updateUsuario($id, $usuario);
+            // flashdata funciona solo en redirigir la funcion en el controlador en la vista de carga
+            session()->setFlashdata('mensaje', 'Usuario eliminado exitosamente');
+            // return $this->response->redirect('/registro');
+            return redirect()->to('usuarios');
+        } else{
+            return redirect()->to('/');
+        }
     }
 
 }

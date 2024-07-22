@@ -32,3 +32,5 @@ assets/data/corrales_fernando.sql
  - Incorporación de la **vista Agentes** en el **perfil usuario** por medio de **JavaScript y Datatable** 
  - Las **funcionalidades de la misma aún no han sido incorporadas** a la espera del Trabajo Integrador IV
  - La **tabla aún no fue incorpada a la base de datos** y se mantiene en un **.json separado**.
+### Menu adaptativo según tipo de perfil
+ - Se procedió a **proteger los métodos del `UsuariosController`** contra accesos no autorizados del usuario al ingresar directamente desde la URL
