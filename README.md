@@ -2,7 +2,8 @@
 Clonar repositorio o renombrar carpeta al descargar el .zip (quitar el -main)
 
 ## Base de datos SQL en (importarla):
-assets/data/corrales_fernando.sql
+ - assets/data/corrales_fernando.sql
+ - copia en el raiz del proyecto (/corrales_fernando.sql)
 
 ## Credenciales de acceso:
 ### Credenciales del usuario ADMIN:
@@ -18,7 +19,7 @@ assets/data/corrales_fernando.sql
  - Login Usuario (con autentificación)
  - Menu adaptativo según tipo de perfil (Admin o Usuario)
  - Admin y Usuario pueden acceder a `Mis Datos` y modificarlos
- - Admin puede ver (listado de ususarios activos), modificar y eliminar (de forma lógica) usuarios
+ - Admin puede ver (listado de usuarios activos), modificar y eliminar (de forma lógica) usuarios
  - Cierre de Sesión
 
 ## Mejoras incorporadas (más allá de lo solicitado):
