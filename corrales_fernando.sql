@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-07-2024 a las 22:04:15
+-- Tiempo de generación: 06-08-2024 a las 03:30:41
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,11 +20,15 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `corrales_fernando`
 --
+CREATE DATABASE IF NOT EXISTS `corrales_fernando` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `corrales_fernando`;
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `perfiles`
+--
+-- Creación: 12-07-2024 a las 18:38:45
 --
 
 CREATE TABLE `perfiles` (
@@ -45,6 +49,8 @@ INSERT INTO `perfiles` (`id_perfil`, `descripcion`) VALUES
 --
 -- Estructura de tabla para la tabla `usuarios`
 --
+-- Creación: 13-07-2024 a las 01:11:12
+--
 
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
@@ -63,9 +69,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `usuario`, `email`, `pass`, `id_perfil`, `baja`) VALUES
 (1, 'Fernando', 'Corrales', 'fernando', 'micorreo@gmail.com', '$2y$10$P9b5.oSo56CjgXnKOtluO.DMjDeo8TlByrvSeWKt/0bstdmlHFQsm', 2, 'SI'),
-(2, 'Kanou2', 'Reload', 'admin', 'admin@admin.com', '$2y$10$ZzpHz1olivCBz/XKFUSc2uMH3lMqczBHHT/pZ5vhu5WOK8ZYivWf6', 1, 'NO'),
-(7, 'Usuario', 'Nuevo', 'NoSe', 'usuario@usuario.com', '$2y$10$BU7zmzGoRL2QX.YcU/9rceL4grseoUI/fSoRF1wJVL6z7/CdoLiw6', 2, 'NO'),
-(9, 'Nuevo7', 'Usuario', 'NoSe2', 'nuevo@nuevo.com', '$2y$10$e4fQVZtgcjvo6enjTpMxveugZvlLCS3ZekD7Gh9FCtUSUhYOEJawm', 2, 'NO'),
+(2, 'Kanou', 'Reload', 'admin', 'admin@admin.com', '$2y$10$ZzpHz1olivCBz/XKFUSc2uMH3lMqczBHHT/pZ5vhu5WOK8ZYivWf6', 1, 'NO'),
+(7, 'Usuario1', 'Nuevo', 'NoSe', 'usuario@usuario.com', '$2y$10$BU7zmzGoRL2QX.YcU/9rceL4grseoUI/fSoRF1wJVL6z7/CdoLiw6', 2, 'NO'),
+(9, 'Nuevo8', 'Usuario', 'NoSe2', 'nuevo@nuevo.com', '$2y$10$e4fQVZtgcjvo6enjTpMxveugZvlLCS3ZekD7Gh9FCtUSUhYOEJawm', 2, 'NO'),
 (10, 'hola2', 'chau', 'hola', 'hola@hola.com', '$2y$10$I6psBoSWFbce2H503XrGu.jJ.q6A5ADFlcp1eHz4HSmXCuvP9Hnwe', 2, 'NO'),
 (11, 'Codeium', 'Inteligencia Artificial', 'Codeium', 'ai@gmail.com', '$2y$10$3JKnwtpi9LIKaN5qUz8dDe4e9PA7FOYozj3YmADxaHyDE.eJwbD6a', 2, 'NO'),
 (13, 'Sebastian', 'Barrios', 'Sebas', 'seba@gmail.com', '$2y$10$OEq7oyibsNlyN1nGTRDqgeDTjy4cVicLzKRmTcswAyXnPdv7lekJC', 2, 'NO'),
